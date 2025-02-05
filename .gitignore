@@ -1,3 +1,22 @@
+# فایل‌های محیطی (مهم: اینا نباید روی گیت بره!)
 .env
 .env.local
 .env.production
+.env.development
+
+# پوشه‌های بی‌استفاده در گیت
+node_modules
+.next
+out
+dist
+
+# لاگ‌ها و کش‌ها
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# فایل‌های سیستم عامل که لازم نیستن
+.DS_Store
+Thumbs.db

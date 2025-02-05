@@ -2,26 +2,287 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+body {
+  @apply font-Dana bg-gray-100 dark:bg-zinc-800;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@font-face {
+  font-family: "Dana";
+  src: url("/fonts/Dana/woff2/DanaFaNum-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dana Medium";
+  src: url("/fonts/Dana/woff2/DanaFaNum-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Dana DemiBold";
+  src: url("/fonts/Dana/woff2/DanaFaNum-DemiBold.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba Light";
+  src: url("/fonts/Morabba/woff2/Morabba-Light.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba Medium";
+  src: url("/fonts/Morabba/woff2/Morabba-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Morabba DemiBold";
+  src: url("/fonts/Morabba/woff2/Morabba-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+
+
+@layer components {
+  .submenu {
+    @apply hidden flex-col gap-y-3 pr-7 mt-3 text-sm text-zinc-600 dark:text-white;
+  }
+  .submenu--open {
+    @apply flex;
+  }
+  .submenu__item--active::after {
+    @apply relative text-orange-300;
+  }
+  .submenu__item--active {
+    position: relative;
+    padding-right: 10px;
+    color: rgb(240, 167, 32);
+  }
+  .submenu a {
+    width: max-content;
+    display: block;
+    line-height: 2.1;
+  }
+  .submenu__item--active::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    border-radius: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: orange;
+    margin: auto;
+  }
+  .overlay {
+    @apply fixed invisible opacity-0 md:hidden inset-0 w-full h-full bg-black/40 z-10 transition-all;
+  }
+  .overlay--visible {
+    @apply visible opacity-100;
+  }
+  .submenu {
+    display: none;
+  }
+
+  .submenu--open {
+    display: block;
+  }
+
+  .circle {
+    @apply items-center justify-center border rounded-full sm:flex hidden;
+  }
+  .circle--main {
+    @apply absolute bottom-0 right-0 left-0 mx-auto translate-y-2/4;
+  }
+  .circle--lg {
+    @apply w-[203px] h-[203px] border-white/25;
+  }
+  .circle--md {
+    @apply w-[145px] h-[145px] border-white/50;
+  }
+  .circle--sm {
+    @apply w-[95px] h-[95px] border-white/80;
+  }
+
+  @media screen and (min-width: 1024px) {
+    html.dark .products {
+      background-image: url("/images/body-bg.png");
+    }
+    .products {
+      background-image: url("/images/body-bg.png"),
+        linear-gradient(rgba(243, 244, 246, 0.65), rgba(243, 244, 246, 0.65));
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+  .category-banner__right {
+    background-image: url("/images/categories/category-right.jpg"),
+      linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0.6) 33.85%,
+        rgba(243, 244, 246, 0.1) 100%
+      );
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .category-banner_left {
+    background-image: url("/images/categories/category-left.jpg"),
+      linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0.6) 33.85%,
+        rgba(243, 244, 246, 0.1) 100%
+      );
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-5xl font-MorabbaMedium text-zinc-700 dark:text-white;
+  }
+  .section-subtitle {
+    @apply inline-block text-lg md:text-3xl font-MorabbaLight mt-0.5 md:mt-1.5 text-zinc-700 dark:text-white;
+  }
+  .section-link {
+    @apply flex items-center md:gap-x-1 h-10 pr-3 pl-1 text-base md:text-xl tracking-tightest text-orange-300 hover:bg-orange-300/20 rounded-md transition-colors;
+  }
+  .offer {
+    @apply relative text-gray-400;
+  }
+  .offer::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    inset: 0;
+    top: -3px;
+    margin: auto;
+    background-color: #ef4444;
+  }
+
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom {
+    @apply flex-center w-9 h-9 md:w-10 md:h-10 bg-white text-zinc-700 dark:bg-zinc-700 dark:text-white shadow-normal hover:bg-gray-300 dark:hover:bg-white dark:hover:text-zinc-700 cursor-pointer rounded-full;
+  }
+
+  .services {
+    @apply relative;
+  }
+  .services::before,
+  .services::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background-color: #d1d5db;
+  }
+  @media screen and (min-width: 640px) {
+    .services::before,
+    .services::after {
+      content: none;
+    }
+  }
+
+  html.dark .services::before,
+  html.dark .services::after {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .services::after {
+    width: 1px;
+    height: calc(100% + 1.25rem);
+  }
+  .services::before {
+    width: calc(100% - 2rem);
+    height: 1px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 }
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 400px) {
+  .container {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 480px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+
+
+.scroll-container {
+  /* تغییر رنگ پس‌زمینه اسکرول‌بار */
+  ::-webkit-scrollbar {
+    width: 8px; /* عرض اسکرول‌بار */
+  }
+
+  /* تغییر استایل بخش پس‌زمینه اسکرول‌بار */
+  ::-webkit-scrollbar-track {
+    background: #a7a5a5; /* رنگ پس‌زمینه */
+    border-radius: 8px;
+  }
+
+  /* تغییر استایل بخش دستگیره اسکرول */
+  ::-webkit-scrollbar-thumb {
+    background-color: #eccba4; /* رنگ دستگیره اسکرول */
+    border-radius: 10px; /* گرد کردن دستگیره */
+    border: 2px solid transparent;
+    background-clip: border-box; /* ایجاد فاصله بین دستگیره و لبه اسکرول‌بار */
+  }
+
+  /* تغییر رنگ دستگیره اسکرول هنگام هاور کردن */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* رنگ جدید هنگام هاور */
+  }
+
+  /* برای فایرفاکس از CSS Scrollbar استفاده کنید */
+  .scroll-container {
+    scrollbar-width: thin; /* عرض اسکرول‌بار */
+    scrollbar-color: #888 #f1f1f1; /* رنگ دستگیره و پس‌زمینه اسکرول‌بار */
+  }
+}
+
