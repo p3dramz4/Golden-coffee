@@ -7,7 +7,6 @@ export default function DataTable({ users, title }) {
   const router = useRouter();
 
   const changeRole = async (userID) => {
-    // Validation (You)
 
     const res = await fetch("/api/user/role", {
       method: "PUT",
@@ -28,8 +27,6 @@ export default function DataTable({ users, title }) {
   };
 
   const removeUser = async (userID) => {
-    // Confirm ✅
-    // Validation (You) ✅
 
     Swal.fire({
       title: "آیا از حذف کاربر اطمینان دارین؟",
@@ -59,8 +56,6 @@ export default function DataTable({ users, title }) {
   };
 
   const banUser = async (email, phone) => {
-    // Confirm ✅
-    // Validation (You) ✅
 
     Swal.fire({
       title: "آیا از بن کاربر اطمینان دارین؟",

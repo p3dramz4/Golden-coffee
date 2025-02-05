@@ -7,8 +7,6 @@ export async function POST(req) {
     const body = await req.json();
     const { name, email, phone, company, message } = body;
 
-    // Validation (You)
-
     await ContactModel.create({ name, email, phone, company, message });
 
     return Response.json(

@@ -12,13 +12,12 @@ import { useState, useEffect } from "react";
 export default function App() {
 const [products, setProducts] = useState([]);
 
-// از useEffect برای گرفتن 5 محصول استفاده می‌کنیم
 useEffect(() => {
   const fetchProducts = async () => {
-    const res = await fetch("/api/products?limit=5"); // ارسال درخواست برای دریافت 5 محصول
+    const res = await fetch("/api/products?limit=5"); 
     const data = await res.json();
     if (data.products) {
-      setProducts(data.products); // ذخیره محصولات در state
+      setProducts(data.products); 
     } else {
       console.error("Failed to load products:", data.message);
     }

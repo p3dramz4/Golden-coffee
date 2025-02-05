@@ -10,14 +10,14 @@ import { useCart } from "@/context/CartContext";
 export default function AllProducts() {
   const [user, setUser] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]); // محصولات فیلتر شده
+  const [filteredProducts, setFilteredProducts] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hoveredProductIndex, setHoveredProductIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const productsPerPage = 12;
-  const [categoryFilter, setCategoryFilter] = useState(""); // فیلتر دسته‌بندی
+  const [categoryFilter, setCategoryFilter] = useState(""); 
   const { addToCart } = useCart();
 
   useEffect(() => {
@@ -57,7 +57,6 @@ export default function AllProducts() {
     fetchAllProducts();
   }, [currentPage]);
 
-  // اینجا برای فیلتر کردن محصولات بر اساس دسته‌بندی انتخاب شده
   useEffect(() => {
     if (categoryFilter) {
       const filtered = allProducts.filter(product =>
@@ -66,10 +65,10 @@ export default function AllProducts() {
       if (filtered.length > 0) {
         setFilteredProducts(filtered);
       } else {
-        setFilteredProducts(allProducts); // اگر محصولی پیدا نشد، تمام محصولات رو نشون بده
+        setFilteredProducts(allProducts);
       }
     } else {
-      setFilteredProducts(allProducts); // اگر فیلتر خالی بود، همه محصولات رو نشون بده
+      setFilteredProducts(allProducts); 
     }
   }, [categoryFilter, allProducts]);
 
@@ -90,7 +89,7 @@ export default function AllProducts() {
   };
 
   const handleCategoryClick = category => {
-    setCategoryFilter(category); // فیلتر کردن محصولات بر اساس دسته‌بندی کلیک شده
+    setCategoryFilter(category); 
   };
 
   if (loading) return <p>در حال بارگذاری...</p>;
@@ -183,8 +182,6 @@ export default function AllProducts() {
               </div>
             ))}
           </div>
-
-          {/* Pagination */}
           <div className="flex justify-center mt-10">
             <button
               className="px-4 py-2 bg-gray-300 rounded-lg mx-2"
@@ -192,8 +189,6 @@ export default function AllProducts() {
               onClick={() => handlePageChange(currentPage - 1)}>
               قبلی
             </button>
-
-            {/* نمایش شماره صفحات */}
             <div className="flex items-center gap-2">
               {Array.from({ length: totalPages }, (_, index) => (
                 <button

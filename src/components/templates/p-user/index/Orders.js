@@ -12,10 +12,6 @@ const Orders = () => {
           همه سفارش ها <FaArrowLeft />
         </Link>
       </div>
-      {/* <Order />
-      <Order />
-      <Order /> */}
-
       <p className={styles.empty}>سفارشی ثبت نشده</p>
     </div>
   );

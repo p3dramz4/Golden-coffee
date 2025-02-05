@@ -1,13 +1,10 @@
 import React from "react";
 import AdminPanelLayout from "@/components/layouts/AdminPanelLayout";
-
 import styles from "@/styles/p-admin/index.module.css";
 import Box from "@/components/modules/infoBox/InfoBox";
 import SaleChart from "@/components/templates/p-admin/index/SaleChart";
 import GrowthChart from "@/components/templates/p-admin/index/GrowthChart";
-
 import TicketModel from "@/models/Ticket";
-import CommentModel from "@/models/Comment";
 import UserModel from "@/models/User";
 import ProductModel from "@/models/Product";
 import connectToDB from "@/configs/db";

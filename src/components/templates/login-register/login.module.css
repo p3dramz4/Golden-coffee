@@ -1,28 +1,26 @@
-/* login.module.css */
+
 .checkbox {
   display: flex;
   align-items: center;
-  gap: 8px; /* فاصله بین چک‌باکس و متن */
+  gap: 8px;
 }
 
 .checkbox input {
   width: 20px;
   height: 20px;
-  border: 2px solid #ccc; /* رنگ مرز */
+  border: 2px solid #ccc;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
-  background-color: #fff; /* پس‌زمینه چک‌باکس */
+  background-color: #fff; 
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* حالت تیک خورده */
 .checkbox input:checked {
-  background-color: #70706e; /* رنگ پس‌زمینه بعد از تیک خوردن */
-  border-color: #70706e; /* رنگ مرز بعد از تیک خوردن */
+  background-color: #70706e;
+  border-color: #70706e;
 }
 
-/* ایجاد تیک با استفاده از یک مربع کوچک در وسط چک‌باکس */
 .checkbox input:checked::before {
   content: "";
   position: absolute;
@@ -31,11 +29,10 @@
   width: 6px;
   height: 12px;
   border: solid white;
-  border-width: 0 3px 3px 0; /* شکل تیک */
+  border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
 
-/* تغییر رنگ متن */
 .checkbox p {
   font-size: 14px;
   color: #333;

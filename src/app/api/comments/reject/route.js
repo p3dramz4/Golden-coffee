@@ -6,7 +6,6 @@ export async function PUT(req) {
     connectToDB();
     const body = await req.json();
     const { id } = body;
-    // Validation (You)
 
     await CommentModel.findOneAndUpdate(
       { _id: id },

@@ -16,16 +16,16 @@ export default function Navbar({ isLogin, setCategoryFilter }) {
    useEffect(() => {
      const getUser = async () => {
        try {
-         const res = await fetch("/api/auth/me"); // دریافت اطلاعات کاربر از API
+         const res = await fetch("/api/auth/me"); 
          const data = await res.json();
          if (res.ok && data) {
-           setUser(data); // ذخیره اطلاعات کاربر
+           setUser(data);
          } else {
-           setUser(null); // اگر داده‌ای نبود، مقدار رو null کن
+           setUser(null);
          }
        } catch (error) {
          console.error("خطا در دریافت اطلاعات کاربر:", error);
-         setUser(null); // در صورت خطا، مقدار رو null کن
+         setUser(null); 
        }
      };
 
@@ -306,7 +306,6 @@ export default function Navbar({ isLogin, setCategoryFilter }) {
                   </div>
                 )
               ) : (
-                // ✅ نمایش گزینه ورود برای کاربران لاگین‌نشده
                 <div className="flex cursor-pointer tracking-tightest py-3 items-center">
                   <Icons.ArrowIcon />
                   <Link

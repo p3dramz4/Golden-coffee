@@ -14,14 +14,13 @@ const Sidebar = () => {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
-  // گرفتن اطلاعات کاربر
   useEffect(() => {
     const getUser = async () => {
       try {
         const res = await fetch("/api/auth/me");
         const data = await res.json();
         if (res.ok) {
-          setUser(data); // ذخیره داده‌های کاربر در state
+          setUser(data);
         }
       } catch (error) {
         console.error("خطا در دریافت اطلاعات کاربر:", error);

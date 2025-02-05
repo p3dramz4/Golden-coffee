@@ -22,9 +22,6 @@ const page = async () => {
           comments={JSON.parse(JSON.stringify(comments))}
           title="لیست کامنت‌ها"
         />
-        {/* <p className={styles.empty}>
-          کامنتی وجود ندارد
-        </p>  */}
       </main>
     </Layout>
   );

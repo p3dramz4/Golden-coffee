@@ -9,7 +9,7 @@ import {
 import UserModel from "@/models/User";
 import connectToDB from "@/configs/db";
 import { serialize } from "cookie";
-import { NextResponse } from "next/server"; // برای سازگاری بیشتر با Next.js
+import { NextResponse } from "next/server"; 
 
 export async function POST(req) {
   try {
@@ -77,10 +77,8 @@ export async function POST(req) {
       { $set: { refreshToken } }
     );
 
-    // تعیین مقدار `secure` بر اساس محیط اجرا
     const isProduction = process.env.NODE_ENV === "production";
 
-    // ست کردن کوکی‌ها
     const accessTokenCookie = serialize("token", accessToken, {
       httpOnly: true,
       secure: isProduction,
@@ -105,7 +103,6 @@ export async function POST(req) {
       { status: 200 }
     );
 
-    // ست کردن هدر `Set-Cookie`
     response.headers.set(
       "Set-Cookie",
       `${accessTokenCookie}; ${refreshTokenCookie}`

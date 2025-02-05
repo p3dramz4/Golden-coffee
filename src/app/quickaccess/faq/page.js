@@ -84,7 +84,6 @@ const FAQ = () => {
                 <div className="text-base sm:text-lg md:text-xl text-zinc-800 dark:text-white">
                   {faq.question}
                 </div>
-                {/* Arrow icon based on whether FAQ is open or closed */}
                 {openIndex === index ? (
                   <Icons.ChevronUp className="h-5 w-5" />
                 ) : (

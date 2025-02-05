@@ -13,7 +13,6 @@ const Ticket = ({ _id, title, department, hasAnswer, createdAt }) => {
         <p className={styles.no_answer}>
           {hasAnswer ? "پاسخ داده شده" : "پاسخ داده نشده"}
         </p>
-        {/* answer */}
       </div>
     </Link>
   );

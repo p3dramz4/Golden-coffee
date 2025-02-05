@@ -8,7 +8,7 @@ import Details from "@/components/templates/checkout/details/Details";
 
 const Page = () => {
   const [user, setUser] = useState(null);
-  const [discountCode, setDiscountCode] = useState(null); // درست کردن نام متغیر
+  const [discountCode, setDiscountCode] = useState(null);
   const [finalPrice, setFinalPrice] = useState(0);
 
   useEffect(() => {
@@ -26,17 +26,15 @@ const Page = () => {
       }
     };
 
-    // خواندن اطلاعات تخفیف و قیمت نهایی از localStorage
     const savedDiscountCode = JSON.parse(localStorage.getItem("discountCode"));
     const savedFinalPrice = localStorage.getItem("finalPrice");
 
-    // اعمال مقادیر خوانده شده در state
     if (savedDiscountCode !== null) {
-      setDiscountCode(savedDiscountCode); // ذخیره کد تخفیف
+      setDiscountCode(savedDiscountCode); 
     }
 
     if (savedFinalPrice !== null) {
-      setFinalPrice(savedFinalPrice); // ذخیره قیمت نهایی
+      setFinalPrice(savedFinalPrice); 
     }
 
     fetchUserData();

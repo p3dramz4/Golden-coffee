@@ -7,8 +7,6 @@ export async function POST(req) {
     const body = await req.json();
     const { title, department } = body;
 
-    // Valid Title ✅
-
     await SubDepartmentModel.create({ title, department });
 
     return Response.json(

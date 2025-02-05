@@ -16,8 +16,6 @@ const Tickets = ({ tickets }) => {
       {tickets.map((ticket) => (
         <Ticket key={ticket._id} {...ticket} />
       ))}
-
-      {/* <p className={styles.empty}>تیکتی ثبت نشده</p> */}
     </div>
   );
 };

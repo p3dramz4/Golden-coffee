@@ -12,14 +12,12 @@ function AddDiscount() {
 
   useEffect(() => {
     const getProducts = async () => {
-      // Fetch to get products data
     };
 
     getProducts();
   }, []);
 
   const addDiscount = async () => {
-    // Validation (You) ✅
 
     const discount = {
       code,

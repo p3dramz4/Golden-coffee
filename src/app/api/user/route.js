@@ -9,8 +9,6 @@ export async function POST(req) {
     const body = await req.json();
     const { name, email, phone } = body;
 
-    // Validation (You)
-
     await UserModel.findOneAndUpdate(
       { _id: user._id },
       {

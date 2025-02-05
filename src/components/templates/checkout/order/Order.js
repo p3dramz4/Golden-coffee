@@ -1,47 +1,41 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useCart } from "@/context/CartContext"; // گرفتن تخفیف از Context
+import { useCart } from "@/context/CartContext"; 
 import Link from "next/link";
 
 const Order = () => {
-  const { cart, discountCode } = useCart(); // تخفیف از Context
+  const { cart, discountCode } = useCart(); 
   const [totalAmount, setTotalAmount] = useState(0);
   const [taxAmount, setTaxAmount] = useState(0);
   const [finalAmount, setFinalAmount] = useState(0);
-  const [discountAmount, setDiscountAmount] = useState(0); // اضافه کردن state برای تخفیف
+  const [discountAmount, setDiscountAmount] = useState(0); 
   const shippingCost = 80000;
 
   useEffect(() => {
-    console.log("Discount Code: ", discountCode); // لاگ برای تخفیف دریافتی
+    console.log("Discount Code: ", discountCode);
 
-    // محاسبه جمع کل مبلغ محصولات
     const calculatedTotal = cart.reduce(
       (acc, item) => acc + item.price * item.count,
       0
     );
 
-    // بررسی تخفیف کلی
     const discount =
       discountCode && discountCode.percent
         ? (calculatedTotal * discountCode.percent) / 100
         : 0;
-    console.log("Calculated Discount: ", discount); // لاگ محاسبه تخفیف
+    console.log("Calculated Discount: ", discount);
 
-    // مبلغ نهایی پس از تخفیف
     const discountedTotal = calculatedTotal - discount;
 
-    // محاسبه مالیات (۱۰%)
     const calculatedTax = discountedTotal * 0.1;
 
-    // محاسبه مبلغ نهایی شامل تخفیف، مالیات و هزینه حمل و نقل
     const finalTotal = discountedTotal + calculatedTax + shippingCost;
 
-    // ذخیره مقادیر نهایی
-    setTotalAmount(calculatedTotal); // جمع جزئی قیمت‌ها
-    setTaxAmount(calculatedTax); // محاسبه مالیات
-    setFinalAmount(finalTotal); // مبلغ نهایی
-    setDiscountAmount(discount); // ذخیره تخفیف
-  }, [cart, discountCode]); // وابستگی به cart و discount
+    setTotalAmount(calculatedTotal); 
+    setTaxAmount(calculatedTax); 
+    setFinalAmount(finalTotal); 
+    setDiscountAmount(discount);
+  }, [cart, discountCode]); 
 
   return (
     <div className="text-black w-full lg:w-1/2 text-right relative bg-white rounded-md p-8 direction-ltr">

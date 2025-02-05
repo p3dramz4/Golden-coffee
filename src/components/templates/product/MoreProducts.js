@@ -10,7 +10,6 @@ const MoreProducts = ({ productID, smell }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    // ارسال درخواست به API برای دریافت محصولات مرتبط بر اساس smell
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(

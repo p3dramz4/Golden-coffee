@@ -7,8 +7,6 @@ export async function POST(req) {
     const body = await req.json();
     const { user, product } = body;
 
-    // Validation (You)
-
     const wish = await WishlistModel.findOne({ user, product });
 
     if (!wish) {

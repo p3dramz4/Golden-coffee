@@ -9,8 +9,6 @@ export async function POST(req) {
     const reqBody = await req.json();
     const { title, body, department, subDepartment, priority } = reqBody;
 
-    // Validation (You)
-
     await TicketModel.create({
       title,
       body,

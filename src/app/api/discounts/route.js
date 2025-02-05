@@ -7,8 +7,6 @@ export async function POST(req) {
     const body = await req.json();
     const { code, percent, maxUse } = body;
 
-    // Validation (You) ✅
-
     await DiscountModel.create({
       code,
       percent,

@@ -7,8 +7,6 @@ export async function PUT(req) {
     const body = await req.json();
     const { code } = body;
 
-    // Validation (You) ✅
-
     const discount = await DiscountModel.findOne({ code });
     await DiscountModel.findOneAndUpdate(
       { code },
